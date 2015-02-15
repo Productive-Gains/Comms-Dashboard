@@ -4,29 +4,29 @@ Feature: Capture meetings statistics data
   # Who, What, Why
   
   Scenario Outline: Receive data for a single meeting
-    Given a client has meeting data with this specific field "<field>" and value "<value>"
-    When the client sends meeting data
+    Given a client has meeting data with this specific field <field> and value <value>
+    When the client sends the meeting data
     Then the meeting data should be saved in the system
-      And the meeting data should have this specific field "<field>" and value "<value>" saved in the system
+      And the meeting data should have this specific field <field> and value <value> saved in the system
       And the client gets a success response
     Examples:
-      | field    |  value                  | description                      |
-      | ID       | 12345678901234567890    | Largest acceptable value for ID  |
-      | ID       | 1234                    | smallest acceptable value for ID |
-      | ID       | ABced- /                | ID with acceptable values for ID |
+      | field      |  value                  | description                      |
+      | meetingId  | 12345678901234567890    | Largest acceptable value for ID  |
+      | meetingId  | 1234                    | smallest acceptable value for ID |
+      | meetingId  | ABced- /                | ID with acceptable values for ID |
     # More to add here....
 
   @negative_test
   Scenario Outline: Handle invalid meeting data
-    Given a client has meeting data with this specific field "<field>" and value "<value>"
+    Given a client has meeting data with this specific field <field> and value <value>
     When the client sends the meeting data
-    Then the system send an error message "<error>" to the client
+    Then the system sends an error message <error> to the client
       And the system logs the error
       And the system should not save the meeting data
     Examples:
-    | field    |  value                  |  error           | description              |
-    | ID       | 123456789012345678901   | ID is too large  | Too large a value for ID |
-    | ID       | 1234<IIC>               | Invalid character in ID | ID contains an invalid char. |
+    | field     |  value                  |  error           | description              |
+    | meetingId | 123456789012345678901   | ID is too large  | Too large a value for ID |
+    | meetingId | 1234<IIC>               | Invalid character in ID | ID contains an invalid char. |
     # More to add here....
 
   # IIC = Invalid ID Char = any unacceptable character for the ID field, which triggers a failure.

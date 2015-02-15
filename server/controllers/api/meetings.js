@@ -9,14 +9,16 @@ var router = express.Router();
 router.post('/', function (req, res, next) {
     var meeting = new Meeting(
         {
+            meetingId: req.body.meetingId,
             organizerEmail: req.body.organizerEmail,
             startDateTime: req.body.startDateTime,
             endDateTime: req.body.endDateTime,
             attendees: req.body.attendees
         }
     )
-    meeting.save(function (err, post) {
+    meeting.save(function (err, meeting) {
         if (err) {
+            console.log("error saving " + err);
             return next(err)
         }
         //websockets.broadcast('new_post', post)
@@ -26,12 +28,12 @@ router.post('/', function (req, res, next) {
 //        pubsub.publish('new_post', post);
         // function to send a message to the clients on the current process
 
-        res.json(201, meeting)
+        res.status(201).json(meeting)
     })
 });
 
 router.get('/', function (req, res, next) {
-    Meeting.find().sort('-date').exec(function (err, meetings) {
+    Meeting.find(function (err, meetings) {
         if (err) {
             return next(err)
         }
@@ -43,7 +45,8 @@ router.get('/', function (req, res, next) {
         //    sub = true;
         //}
 
-        res.json(meetings)
+        //console.log("Meeting are " + meetings);
+        res.status(200).json(meetings)
     });
     //    Post.find(function (err, posts) {
     //    if (err) {

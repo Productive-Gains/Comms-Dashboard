@@ -1,4 +1,3 @@
-@dev
 Feature: Display Overview
   As a dashboard user,
   I want to open the dashboard,
