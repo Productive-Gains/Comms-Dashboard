@@ -1,3 +1,4 @@
+var db = require('./server/models/db')
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');

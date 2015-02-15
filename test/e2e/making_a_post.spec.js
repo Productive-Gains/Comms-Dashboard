@@ -1,4 +1,4 @@
-var db = require('../../db')
+var db = require('../../server/models/db')
 var User = require('../../server/models/user')
 var bcrypt = require('bcrypt')
 var chai = require('chai')

@@ -1,5 +1,5 @@
-var db = require('../../db');
-var Schema = db.Schema;
+var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
 var modifiedOn = require('./plugins/modifiedOn');
 var createdOn = require('./plugins/createdOn');
 
@@ -18,6 +18,6 @@ var meetingSchema = new Schema({
 meetingSchema.plugin(modifiedOn, {});
 meetingSchema.plugin(createdOn, {});
 
-var Meeting = db.model('Meeting', meetingSchema);
+var Meeting = mongoose.model('Meeting', meetingSchema);
 
 module.exports = Meeting;

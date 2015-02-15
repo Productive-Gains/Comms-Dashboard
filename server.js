@@ -10,8 +10,6 @@ var http = require('http');
 var websockets = require('./websockets');
 
 
-
-
 /**
  * Get port from environment and store in Express.
  */

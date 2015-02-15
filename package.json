@@ -30,8 +30,6 @@
   "devDependencies": {
     "blanket": "^1.1.6",
     "chai": "^1.10.0",
-    "chai-as-promised": "^4.1.1",
-    "chai-jq": "^0.0.8",
     "cucumber": "^0.4.7",
     "jshint": "^2.6.0",
     "jsonwebtoken": "^3.2.2",

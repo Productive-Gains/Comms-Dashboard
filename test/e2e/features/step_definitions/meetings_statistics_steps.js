@@ -1,4 +1,3 @@
-var db = require('../../../../db');
 var Meeting = require('../../../../server/models/meeting');
 var chai = require('chai');
 var expect = chai.expect;
@@ -31,78 +30,6 @@ var meetings_statistics_steps = function() {
        console.log('After (' + afters + ') : ' + scenario.getName());
         callback();
     });
-    
-    //this.Given(/^a client has meeting data to send to the dashboard server$/, function (callback) {
-    //    meetingData = {
-    //        organizerEmail: 'organizer1@gmail.com',
-    //        startDateTime: '2015-01-23T18:25:43.511Z',
-    //        endDateTime: '2015-01-23T19:25:43.511Z',
-    //        attendees: [{email: "attendee1@gmail.com", email: "attendee2@gmail.com", email: "attendee3@gmail.com"}]
-    //    };
-    //    callback();
-    //});
-    //
-    //this.When(/^the client sends meeting data$/, function (callback) {
-    //    var options = {
-    //        method: 'POST',
-    //        url: 'http://localhost:3001/api/meetings',
-    //        headers: {
-    //            'Accept': 'application/json'
-    //        },
-    //        body: meetingData,
-    //        json: true
-    //    };
-    //
-    //    function respCallback(error, response, body) {
-    //        if (!error && response.statusCode == 200) {
-    //            var info = JSON.parse(body);
-    //            console.log(response);
-    //            console.log(info);
-    //        }
-    //    }
-    //    request(options, respCallback);
-    //    callback();
-    //});
-    //
-    //this.Then(/^the meeting data should be saved in the system$/, function (callback) {
-    //    var options = {
-    //        method: 'GET',
-    //        url: 'http://localhost:3001/api/meetings',
-    //        headers: {
-    //            'Accept': 'application/json'
-    //        }
-    //    };
-    //
-    //    function respCallback(error, response, body) {
-    //        var meetings = [];
-    //
-    //        if (!error && response.statusCode == 200) {
-    //            var info = JSON.parse(body);
-    //            meetings = info;
-    //        }
-    //
-    //        expect(meetings).to.have.length(1);
-    //        callback();
-    //    }
-    //
-    //    request(options, respCallback);
-
-        //Meeting.find({}, function(err, meetings) {
-        //    if (err)
-        //        console.log(err);
-        //
-        //    console.log("Meeting are " + meetings);
-        //    expect(meetings).to.have.length(1);
-        //    callback();
-        //});
-        
-        //Meeting.find(function(error, meetings) {
-        //    console.log(error);
-        //    console.log(meetings);
-            
-        //    callback();
-        //});
-    //});
 
     this.Given(/^a client has meeting data with this specific field (.*) and value (.*)$/, function (field, value, callback) {
         meetingData = {
@@ -138,62 +65,31 @@ var meetings_statistics_steps = function() {
                     console.log(responseCode);
                     //console.log(info);
                 }
+
+                callback();
             }
+        
             request(options, respCallback);
-            callback();
     });
 
     this.Then(/^the meeting data should be saved in the system$/, function (callback) {
         callback();
     });
 
-    this.Given(/^the meeting data should have this specific field (.*) and value (.*) saved in the system$/, function (field, value, callback) {
+    this.Then(/^the meeting data should have this specific field (.*) and value (.*) saved in the system$/, function (field, value, callback) {
         Meeting.find(function(error, docs) {
                 if ( error || !docs ) {
                     console.log("error " + error);
                 }
                 else {
-                    console.log("Document is " + docs);
                     expect(docs).to.have.length(1);
-
                 }
 
-                callback();
+                //callback();
             });
-        
-        //Meeting.find(function(err, meetings) {
-        //    if (err)
-        //        console.log(err);
-        //
-        //    console.log("Meeting are " + meetings);
-        //    expect(meetings).to.have.length(1);
-        //    callback();
-        //});
-        //var options = {
-        //    method: 'GET',
-        //    url: 'http://localhost:3001/api/meetings',
-        //    headers: {
-        //        'Accept': 'application/json'
-        //    }
-        //};
-        //
-        //function respCallback(error, response, body) {
-        //    var meetings = [];
-        //
-        //    if (!error && response.statusCode == 200) {
-        //        var info = JSON.parse(body);
-        //        meetings = info;
-        //    }
-        //
-        //    expect(meetings).to.have.length(1);
-        //    expect(meetings[0][field]).to.equal(value);
-        //    callback();
-        //}
-        ////
-        //request(options, respCallback);
     });
 
-    this.Given(/^the client gets a success response$/, function (callback) {
+    this.Then(/^the client gets a success response$/, function (callback) {
         expect(responseCode).to.be.greaterThan(199).and.lessThan(300);
         callback();
     });
@@ -212,7 +108,6 @@ var meetings_statistics_steps = function() {
         // Write code here that turns the phrase above into concrete actions
         callback.pending();
     });
-
 };
 
 module.exports = meetings_statistics_steps;
