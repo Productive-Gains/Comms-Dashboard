@@ -2,7 +2,7 @@
 //    return "$" + label.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 //};
 
-angular.module('dashboardApp').controller("dailyTotalMeetingCostsChartCtrl", function ($scope) {
+angular.module('dashboardApp').controller("dailyMoraleRatingChartCtrl", function ($scope) {
     var data = {
         labels: ['1/16/2015', '1/17/2015', '1/18/2015', '1/19/2015', '1/20/2015', '1/21/2015', '1/22/2015',
             '1/23/2015', '1/24/2015', '1/25/2015', '1/26/2015', '1/27/2015', '1/28/2015', '1/29/2015', '1/30/2015',
@@ -10,53 +10,39 @@ angular.module('dashboardApp').controller("dailyTotalMeetingCostsChartCtrl", fun
             '2/8/2015', '2/9/2015', '2/10/2015', '2/11/2015', '2/12/2015', '2/13/2015', '2/14/2015', '2/15/2015'],
         datasets: [
             {
-                label: "Daily Productivity Ratings",
+                label: "Email Mood Rating",
                 fillColor: "rgba(0,0,0,0)",
                 strokeColor: "rgba(151,187,205,1)",
                 pointColor: "rgba(151,187,205,1)",
                 pointStrokeColor: "#fff",
                 pointHighlightFill: "#fff",
                 pointHighlightStroke: "rgba(151,187,205,0.8)",
-                data: [76230, 62720, 86240, 59500, 73780,
-                    76230, 82460, 73500, 83160, 66150,
-                    67200, 45360, 68600, 40250, 29400,
-                    32340, 46620, 22730.40, 17671.50, 20328.00,
-                    16632, 12485.20, 11911.90, 3542, 19835.20,
-                    13028.40, 4737.60, 23161.60, 7106.40, 15134.00,
-                    6316.80]
+                data: [1, 2, 2, 1, 3, 1, 2, 2, 3, 2, 1, 2, 2, 3, 3, 2, 4, 4, 3, 5, 4, 5, 4, 4, 5, 4, 4, 5, 5, 4, 3]
             },
             {
-                label: "Daily Productivity Ratings",
+                label: "Meeting Mood Rating",
                 fillColor: "rgba(0,0,0,0)",
                 strokeColor: "rgba(220,220,220,1)",
                 pointColor: "rgba(220,220,220,1)",
                 pointStrokeColor: "#fff",
                 pointHighlightFill: "#fff",
                 pointHighlightStroke: "rgba(220,220,220,0.8)",
-                data: [38115, 28224, 47432, 35700, 42054.60,
-                    32778.90, 40405.40, 38220.00, 47401.20, 31785.60,
-                    40320, 24948, 41160, 26162.50, 20580,
-                    24255.00, 37296.00, 22730.40, 17671.50, 20328.00,
-                    16632, 12485.20, 11911.90, 3542, 19835.20,
-                    13028.40, 4737.60, 23161.60, 7106.40, 15134.00,
-                    6316.80]
+                data: [1, 2, 1, 1, 2, 2, 1, 2, 2, 2, 1, 3, 2, 3, 3, 4, 4, 3, 4, 4, 4, 5, 3, 4, 4, 5, 5, 5, 4, 4, 3]
             }
         ]
     };
 
     // Fix hit detection for tooltips and scale labels being cutoff.
     var options = {
-        pointHitDetectionRadius: 1,
-        scaleLabel: "<%= '$' + Number(value).toLocaleString()%>",
-        multiTooltipTemplate: "<%= datasetLabel %>: <%= '$' + Number(value).toLocaleString()%>",
+        pointHitDetectionRadius : 1,
+        scaleLabel: "<%= ' ' + value%>",
         responsive: true,
         maintainAspectRatio: true,
-        bezierCurve: false
-    };
+        bezierCurve : false
+    }
 
-
-        // Adjust canvas size to parent container size
-    var canvas = document.getElementById("dailyTotalMeetingCostsChart");
+    // Adjust canvas size to parent container size
+    var canvas = document.getElementById("dailyMoraleRatingChart");
     //canvas.width = canvas.parentNode.clientWidth;
     //canvas.height = canvas.parentNode.clientHeight;
 

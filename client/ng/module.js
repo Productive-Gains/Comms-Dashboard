@@ -1,1 +1,1 @@
-angular.module('dashboardApp', ['chart.js', 'ngRoute']);
+angular.module('dashboardApp', ['ngRoute']);
