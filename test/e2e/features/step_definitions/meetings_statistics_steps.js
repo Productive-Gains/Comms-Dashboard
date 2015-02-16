@@ -19,15 +19,15 @@ var meetings_statistics_steps = function() {
             if (err)
                 console.log(err);
 
+            callback();
         });
 
         meetingData = null;
-        callback();
     });
 
     this.After(function(scenario, callback) {
         afters++;
-       console.log('After (' + afters + ') : ' + scenario.getName());
+        console.log('After (' + afters + ') : ' + scenario.getName());
         callback();
     });
 
@@ -41,8 +41,7 @@ var meetings_statistics_steps = function() {
         };
         
         meetingData[field] = value;
-        
-        //console.log("meetingData is " + JSON.stringify(meetingData));
+
         callback();
     });
 
@@ -60,10 +59,8 @@ var meetings_statistics_steps = function() {
 
             function respCallback(error, response, body) {
                 if (!error && (response.statusCode == 201 || response.statusCode == 200)) {
-                    //var info = JSON.parse(body);
                     responseCode = response.statusCode;
                     console.log(responseCode);
-                    //console.log(info);
                 }
 
                 callback();
@@ -78,15 +75,15 @@ var meetings_statistics_steps = function() {
 
     this.Then(/^the meeting data should have this specific field (.*) and value (.*) saved in the system$/, function (field, value, callback) {
         Meeting.find(function(error, docs) {
-                if ( error || !docs ) {
-                    console.log("error " + error);
-                }
-                else {
-                    expect(docs).to.have.length(1);
-                }
+            if ( error || !docs ) {
+                console.log("error " + error);
+            }
+            else {
+                expect(docs).to.have.length(1);
+            }
 
-                //callback();
-            });
+            callback();
+        });
     });
 
     this.Then(/^the client gets a success response$/, function (callback) {
@@ -99,12 +96,12 @@ var meetings_statistics_steps = function() {
         callback.pending();
     });
 
-    this.Given(/^the system logs the error$/, function (callback) {
+    this.Then(/^the system logs the error$/, function (callback) {
         // Write code here that turns the phrase above into concrete actions
         callback.pending();
     });
 
-    this.Given(/^the system should not save the meeting data$/, function (callback) {
+    this.Then(/^the system should not save the meeting data$/, function (callback) {
         // Write code here that turns the phrase above into concrete actions
         callback.pending();
     });
