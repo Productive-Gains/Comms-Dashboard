@@ -2,25 +2,25 @@
     <div class="well well-sm">
         <div class="container-fluid">
             <div ng-include='"/views/stats.html"'></div>
-            <div class="col-md-6 panel" ng-controller="lineCtrl">
-                <div class="panel-heading">Daily Total Meeting Costs</div>
-                <canvas id="line1" class="chart chart-line panel-body" data="dailyMeetingCostsData"
-                        labels="dailyMeetingCostsLabels" series="dailyMeetingCostsSeries"></canvas>
+            <div class="col-md-6 panel" ng-controller="overallMoraleRatingChartCtrl">
+                <div class="panel-heading">Overall Morale Rating</div>
+                <div class="panel-body"><div><canvas id="overallMoraleRatingChart"></canvas></div></div>
+                <div class="panel-body text-center" id="overallMoraleRatingChartLegend"></div>
             </div>
-            <div class="col-md-6 panel" ng-controller="lineCtrl">
+            <div class="col-md-6 panel" ng-controller="dailyProductivityRatingChartCtrl">
                 <div class="panel-heading">Daily Productivity Rating</div>
-                <canvas id="line2" class="chart chart-bar panel-body" data="dailyProductivityRatingData"
-                        labels="dailyProductivityRatingLabels" series="dailyProductivityRatingSeries"></canvas>
+                <div class="panel-body"><div><canvas id="dailyProductivityRatingChart"></canvas></div></div>
+                <div class="panel-body text-center" id="dailyProductivityRatingChartLegend"></div>
             </div>
-            <div class="col-md-6 panel" ng-controller="lineCtrl">
-                <div class="panel-heading">Daily Average Meeting Costs</div>
-                <canvas id="line3" class="chart chart-line panel-body" data="dailyAverageMeetingCostsData"
-                        labels="dailyAverageMeetingCostsLabels" series="dailyAverageMeetingCostsSeries"></canvas>
+            <div class="col-md-6 panel" ng-controller="dailyMoraleRatingChartCtrl">
+                <div class="panel-heading">Daily Morale Rating</div>
+                <div class="panel-body"><div><canvas id="dailyMoraleRatingChart"></canvas></div></div>
+                <div class="panel-body text-center" id="dailyMoraleRatingChartLegend"></div>
             </div>
-            <div class="col-md-6 panel" ng-controller="lineCtrl">
-                <div class="panel-heading">Daily Average Meeting Size</div>
-                <canvas id="line4" class="chart chart-line panel-body" data="dailyAverageMeetingSizeData"
-                        labels="dailyAverageMeetingSizeLabels" series="dailyAverageMeetingSizeSeries"></canvas>
+            <div class="col-md-6 panel" ng-controller="dailyCountOfEmailsReadOutsideOfWorkChartCtrl">
+                <div class="panel-heading">Daily Count of Emails Read Outside of Work</div>
+                <div class="panel-body"><div><canvas id="dailyCountOfEmailsReadOutsideOfWorkChart"></canvas></div></div>
+                <div class="panel-body text-center" id="dailyCountOfEmailsReadOutsideOfWorkChartLegend"></div>
             </div>
         </div>
     </div>

@@ -30,7 +30,12 @@ angular.module('dashboardApp').controller("dailyEmailCountByTypeChartCtrl", func
     var options = {
         scaleLabel: "<%= ' ' + value%>",
         responsive: true,
-        maintainAspectRatio: true
+        maintainAspectRatio: true,
+        legendTemplate : '<% for (var i=0; i<datasets.length; i++) { %>'
+        +'<span><div style="width: 10px; height:10px; display: inline-block; background-color: <%=datasets[i].strokeColor%>;"></div>'
+        +'<% if (datasets[i].label) { %>&nbsp;<%= datasets[i].label %>&nbsp;&nbsp;&nbsp;&nbsp;<% } %>'
+        +'</span>'
+        +'<% } %>'
     }
 
     // Adjust canvas size to parent container size
@@ -39,5 +44,8 @@ angular.module('dashboardApp').controller("dailyEmailCountByTypeChartCtrl", func
     //canvas.height = canvas.parentNode.clientHeight;
 
     var ctx = canvas.getContext("2d");
-    new Chart(ctx).StackedBar(data, options);
+    var chart = new Chart(ctx).StackedBar(data, options);
+
+    var legend = chart.generateLegend();
+    document.getElementById("dailyEmailCountByTypeChartLegend").innerHTML = legend;
 });

@@ -1,7 +1,3 @@
-//Chart.defaults.global.scaleLabel = function(label){
-//    return "$" + label.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-//};
-
 angular.module('dashboardApp').controller("dailyTotalMeetingCostsChartCtrl", function ($scope) {
     var data = {
         labels: ['1/16/2015', '1/17/2015', '1/18/2015', '1/19/2015', '1/20/2015', '1/21/2015', '1/22/2015',
@@ -10,10 +6,10 @@ angular.module('dashboardApp').controller("dailyTotalMeetingCostsChartCtrl", fun
             '2/8/2015', '2/9/2015', '2/10/2015', '2/11/2015', '2/12/2015', '2/13/2015', '2/14/2015', '2/15/2015'],
         datasets: [
             {
-                label: "Daily Productivity Ratings",
+                label: "Total Meeting Costs for the Day",
                 fillColor: "rgba(0,0,0,0)",
-                strokeColor: "rgba(151,187,205,1)",
-                pointColor: "rgba(151,187,205,1)",
+                strokeColor: "#97bbcd",
+                pointColor: "#97bbcd",
                 pointStrokeColor: "#fff",
                 pointHighlightFill: "#fff",
                 pointHighlightStroke: "rgba(151,187,205,0.8)",
@@ -26,10 +22,10 @@ angular.module('dashboardApp').controller("dailyTotalMeetingCostsChartCtrl", fun
                     6316.80]
             },
             {
-                label: "Daily Productivity Ratings",
+                label: "Adjusted Total Meeting Costs",
                 fillColor: "rgba(0,0,0,0)",
-                strokeColor: "rgba(220,220,220,1)",
-                pointColor: "rgba(220,220,220,1)",
+                strokeColor: "#dcdcdc",
+                pointColor: "#dcdcdc",
                 pointStrokeColor: "#fff",
                 pointHighlightFill: "#fff",
                 pointHighlightStroke: "rgba(220,220,220,0.8)",
@@ -47,19 +43,25 @@ angular.module('dashboardApp').controller("dailyTotalMeetingCostsChartCtrl", fun
     // Fix hit detection for tooltips and scale labels being cutoff.
     var options = {
         pointHitDetectionRadius: 1,
-        scaleLabel: "<%= '$' + Number(value).toLocaleString()%>",
+        scaleLabel: "<%= ' $' + Number(value).toLocaleString()%>",
         multiTooltipTemplate: "<%= datasetLabel %>: <%= '$' + Number(value).toLocaleString()%>",
         responsive: true,
         maintainAspectRatio: true,
-        bezierCurve: false
+        bezierCurve: false,
+        legendTemplate : '<% for (var i=0; i<datasets.length; i++) { %>'
+        +'<span><div style="width: 10px; height:10px; display: inline-block; background-color: <%=datasets[i].strokeColor%>;"></div>'
+        +'<% if (datasets[i].label) { %>&nbsp;<%= datasets[i].label %>&nbsp;&nbsp;&nbsp;&nbsp;<% } %>'
+        +'</span>'
+        +'<% } %>'
     };
 
-
-        // Adjust canvas size to parent container size
+    // Adjust canvas size to parent container size
     var canvas = document.getElementById("dailyTotalMeetingCostsChart");
     //canvas.width = canvas.parentNode.clientWidth;
     //canvas.height = canvas.parentNode.clientHeight;
 
     var ctx = canvas.getContext("2d");
-    new Chart(ctx).Line(data, options);
+    var chart = new Chart(ctx).Line(data, options);
+    var legend = chart.generateLegend();
+    document.getElementById("dailyTotalMeetingCostsChartLegend").innerHTML = legend;
 });

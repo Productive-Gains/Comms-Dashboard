@@ -2,25 +2,25 @@
     <div class="well well-sm">
         <div class="container-fluid">
             <div ng-include='"/views/stats.html"'></div>
-            <div class="col-md-6 panel" ng-controller="lineCtrl">
+            <div class="col-md-6 panel" ng-controller="dailyTotalMeetingCostsChartCtrl">
                 <div class="panel-heading">Daily Total Meeting Costs</div>
-                <canvas id="line1" class="chart chart-line panel-body" data="dailyMeetingCostsData"
-                        labels="dailyMeetingCostsLabels" series="dailyMeetingCostsSeries"></canvas>
+                <div class="panel-body"><div><canvas id="dailyTotalMeetingCostsChart"></canvas></div></div>
+                <div class="panel-body text-center" id="dailyTotalMeetingCostsChartLegend"></div>
             </div>
-            <div class="col-md-6 panel" ng-controller="lineCtrl">
+            <div class="col-md-6 panel" ng-controller="dailyProductivityRatingChartCtrl">
                 <div class="panel-heading">Daily Productivity Rating</div>
-                <canvas id="line2" class="chart chart-bar panel-body" data="dailyProductivityRatingData"
-                        labels="dailyProductivityRatingLabels" series="dailyProductivityRatingSeries"></canvas>
+                <div class="panel-body"><div><canvas id="dailyProductivityRatingChart"></canvas></div></div>
+                <div class="panel-body text-center" id="dailyProductivityRatingChartLegend"></div>
             </div>
-            <div class="col-md-6 panel" ng-controller="lineCtrl">
+            <div class="col-md-6 panel" ng-controller="dailyAverageMeetingCostsChartCtrl">
                 <div class="panel-heading">Daily Average Meeting Costs</div>
-                <canvas id="line3" class="chart chart-line panel-body" data="dailyAverageMeetingCostsData"
-                        labels="dailyAverageMeetingCostsLabels" series="dailyAverageMeetingCostsSeries"></canvas>
+                <div class="panel-body"><div><canvas id="dailyAverageMeetingCostsChart"></canvas></div></div>
+                <div class="panel-body text-center" id="dailyAverageMeetingCostsChartLegend"></div>
             </div>
-            <div class="col-md-6 panel" ng-controller="lineCtrl">
+            <div class="col-md-6 panel" ng-controller="dailyAverageMeetingSizeChartCtrl">
                 <div class="panel-heading">Daily Average Meeting Size</div>
-                <canvas id="line4" class="chart chart-line panel-body" data="dailyAverageMeetingSizeData"
-                        labels="dailyAverageMeetingSizeLabels" series="dailyAverageMeetingSizeSeries"></canvas>
+                <div class="panel-body"><div><canvas id="dailyAverageMeetingSizeChart"></canvas></div></div>
+                <div class="panel-body text-center" id="dailyAverageMeetingSizeChartLegend"></div>
             </div>
         </div>
     </div>
