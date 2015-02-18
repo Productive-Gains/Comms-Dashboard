@@ -10,10 +10,18 @@ Feature: Capture meetings statistics data
       And the meeting data should have this specific field <field> and value <value> saved in the system
       And the client gets a success response
     Examples:
-      | field      |  value                  | description                      |
-      | meetingId  | 12345678901234567890    | Largest acceptable value for ID  |
-      | meetingId  | 1234                    | smallest acceptable value for ID |
-      | meetingId  | ABced- /                | ID with acceptable values for ID |
+      | field            |  value                         | description                      |
+      | meetingId        | 12345678901234567890           | Largest acceptable value for ID  |
+      | meetingId        | 1234                           | smallest acceptable value for ID |
+      | meetingId        | ABced- /                       | ID with acceptable values for ID |
+      | organizerEmail   | abc@123.com                    | A valid email address            |
+      | startDateTime    | 2012-04-23T18:25:43.511Z       | Date format 1                    |
+      | startDateTime    | 2012-04-21T18:25:43-05:00      | Date format 2                    |
+      | endDateTime      | 2012-04-23T18:25:43.511Z       | Date format 1                    |
+      | endDateTime      | 2012-04-21T18:25:43-05:00      | Date format 2                    |
+      | attendees        |                                | No attendees                     |
+      | attendees        | ["def@123.com"]                | One attendee                     |
+      | attendees        | ["def@123.com", "ghi@123.com"] | Multiple attendees               |
     # More to add here....
 
   @negative_test

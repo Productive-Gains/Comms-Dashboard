@@ -80,6 +80,7 @@ var meetings_statistics_steps = function() {
             }
             else {
                 expect(docs).to.have.length(1);
+                expect(docs[0][field]).to.equal(value);
             }
 
             callback();

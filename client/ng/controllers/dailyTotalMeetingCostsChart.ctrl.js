@@ -1,9 +1,9 @@
 angular.module('dashboardApp').controller("dailyTotalMeetingCostsChartCtrl", function ($scope) {
     var data = {
-        labels: ['1/16/2015', '1/17/2015', '1/18/2015', '1/19/2015', '1/20/2015', '1/21/2015', '1/22/2015',
-            '1/23/2015', '1/24/2015', '1/25/2015', '1/26/2015', '1/27/2015', '1/28/2015', '1/29/2015', '1/30/2015',
-            '1/31/2015', '2/1/2015', '2/2/2015', '2/3/2015', '2/4/2015', '2/5/2015', '2/6/2015', '2/7/2015',
-            '2/8/2015', '2/9/2015', '2/10/2015', '2/11/2015', '2/12/2015', '2/13/2015', '2/14/2015', '2/15/2015'],
+        labels: ['1/16/2015', '', '1/18/2015', '', '1/20/2015', '', '1/22/2015',
+            '', '1/24/2015', '', '1/26/2015', '', '1/28/2015', '', '1/30/2015',
+            '', '2/1/2015', '', '2/3/2015', '', '2/5/2015', '', '2/7/2015',
+            '', '2/9/2015', '', '2/11/2015', '', '2/13/2015', '', '2/15/2015'],
         datasets: [
             {
                 label: "Total Meeting Costs for the Day",
@@ -43,8 +43,8 @@ angular.module('dashboardApp').controller("dailyTotalMeetingCostsChartCtrl", fun
     // Fix hit detection for tooltips and scale labels being cutoff.
     var options = {
         pointHitDetectionRadius: 1,
-        scaleLabel: "<%= ' $' + Number(value).toLocaleString()%>",
-        multiTooltipTemplate: "<%= datasetLabel %>: <%= '$' + Number(value).toLocaleString()%>",
+        scaleLabel: "<%= ' $' + Number(value/1000).toLocaleString() + 'k'%>",
+        multiTooltipTemplate: "<%= datasetLabel %>: <%= '$' + Number(value/1000).toFixed(1).toLocaleString() + 'k'%>",
         responsive: true,
         maintainAspectRatio: true,
         bezierCurve: false,
