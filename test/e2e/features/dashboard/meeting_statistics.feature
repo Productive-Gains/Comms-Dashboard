@@ -1,4 +1,3 @@
-@dev
 Feature: Capture meetings statistics data
   As a client I want to provide data related to meetings so that the organization can improve their communication.
   # Who, What, Why
