@@ -4,8 +4,8 @@ var bcrypt = require('bcrypt')
 var chai = require('chai');
 //var chaiAsPromised = require('chai-as-promised');
 //chai.use(chaiAsPromised);
-var chaiJq = require("chai-jq");
-chai.use(chaiJq);
+//var chaiJq = require("chai-jq");
+//chai.use(chaiJq);
 
 var expect = chai.expect
 
