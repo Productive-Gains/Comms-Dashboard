@@ -1,27 +1,43 @@
-<div class="tab-pane">
-    <div class="well well-sm">
-        <div class="container-fluid">
-            <div ng-include='"/views/stats.html"'></div>
-            <div class="col-md-6 panel" ng-controller="overallMoraleRatingChartCtrl">
-                <div class="panel-heading">Overall Morale Rating</div>
-                <div class="panel-body"><div><canvas id="overallMoraleRatingChart"></canvas></div></div>
-                <div class="panel-body text-center" id="overallMoraleRatingChartLegend"></div>
-            </div>
-            <div class="col-md-6 panel" ng-controller="dailyProductivityRatingChartCtrl">
-                <div class="panel-heading">Daily Productivity Rating</div>
-                <div class="panel-body"><div><canvas id="dailyProductivityRatingChart"></canvas></div></div>
-                <div class="panel-body text-center" id="dailyProductivityRatingChartLegend"></div>
-            </div>
-            <div class="col-md-6 panel" ng-controller="dailyMoraleRatingChartCtrl">
-                <div class="panel-heading">Daily Morale Rating</div>
-                <div class="panel-body"><div><canvas id="dailyMoraleRatingChart"></canvas></div></div>
-                <div class="panel-body text-center" id="dailyMoraleRatingChartLegend"></div>
-            </div>
-            <div class="col-md-6 panel" ng-controller="dailyCountOfEmailsReadOutsideOfWorkChartCtrl">
-                <div class="panel-heading">Daily Count of Emails Read Outside of Work</div>
-                <div class="panel-body"><div><canvas id="dailyCountOfEmailsReadOutsideOfWorkChart"></canvas></div></div>
-                <div class="panel-body text-center" id="dailyCountOfEmailsReadOutsideOfWorkChartLegend"></div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+            <ul class="nav nav-sidebar">
+                <li><a href="#/overview">Overview</a></li>
+                <li><a href="#/meeting">Meetings</a></li>
+                <li><a href="#/email">Email</a></li>
+                <li class="active"><a href="#/morale">Morale <span class="sr-only">(current)</span></a></li>
+            </ul>
+        </div>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+            <div ng-include src="'/views/stats.html'"></div>
+            <h2 class="sub-header">Morale Performance</h2>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-6 chart" ng-controller="overallMoraleRatingChartCtrl">
+                        <div class="panel-heading">Overall Morale Rating</div>
+                        <div class="panel-body"><div><canvas id="overallMoraleRatingChart"></canvas></div></div>
+                        <div class="panel-body chart-legend" id="overallMoraleRatingChartLegend"></div>
+                    </div>
+                    <div class="col-md-6 chart" ng-controller="dailyProductivityRatingChartCtrl">
+                        <div class="panel-heading">Daily Productivity Rating</div>
+                        <div class="panel-body"><div><canvas id="dailyProductivityRatingChart"></canvas></div></div>
+                        <div class="panel-body chart-legend" id="dailyProductivityRatingChartLegend"></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 chart" ng-controller="dailyMoraleRatingChartCtrl">
+                        <div class="panel-heading">Daily Morale Rating</div>
+                        <div class="panel-body"><div><canvas id="dailyMoraleRatingChart"></canvas></div></div>
+                        <div class="panel-body chart-legend" id="dailyMoraleRatingChartLegend"></div>
+                    </div>
+                    <div class="col-md-6 chart" ng-controller="dailyCountOfEmailsReadOutsideOfWorkChartCtrl">
+                        <div class="panel-heading">Daily Count of Emails Read Outside of Work</div>
+                        <div class="panel-body"><div><canvas id="dailyCountOfEmailsReadOutsideOfWorkChart"></canvas></div></div>
+                        <div class="panel-body chart-legend" id="dailyCountOfEmailsReadOutsideOfWorkChartLegend"></div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
+    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2" ng-include src="'/views/footer.html'"></div>
 </div>

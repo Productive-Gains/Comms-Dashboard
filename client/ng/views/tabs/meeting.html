@@ -1,27 +1,43 @@
-<div class="tab-pane">
-    <div class="well well-sm">
-        <div class="container-fluid">
-            <div ng-include='"/views/stats.html"'></div>
-            <div class="col-md-6 panel" ng-controller="dailyTotalMeetingCostsChartCtrl">
-                <div class="panel-heading">Daily Total Meeting Costs</div>
-                <div class="panel-body"><div><canvas id="dailyTotalMeetingCostsChart"></canvas></div></div>
-                <div class="panel-body text-center" id="dailyTotalMeetingCostsChartLegend"></div>
-            </div>
-            <div class="col-md-6 panel" ng-controller="dailyProductivityRatingChartCtrl">
-                <div class="panel-heading">Daily Productivity Rating</div>
-                <div class="panel-body"><div><canvas id="dailyProductivityRatingChart"></canvas></div></div>
-                <div class="panel-body text-center" id="dailyProductivityRatingChartLegend"></div>
-            </div>
-            <div class="col-md-6 panel" ng-controller="dailyAverageMeetingCostsChartCtrl">
-                <div class="panel-heading">Daily Average Meeting Costs</div>
-                <div class="panel-body"><div><canvas id="dailyAverageMeetingCostsChart"></canvas></div></div>
-                <div class="panel-body text-center" id="dailyAverageMeetingCostsChartLegend"></div>
-            </div>
-            <div class="col-md-6 panel" ng-controller="dailyAverageMeetingSizeChartCtrl">
-                <div class="panel-heading">Daily Average Meeting Size</div>
-                <div class="panel-body"><div><canvas id="dailyAverageMeetingSizeChart"></canvas></div></div>
-                <div class="panel-body text-center" id="dailyAverageMeetingSizeChartLegend"></div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+            <ul class="nav nav-sidebar">
+                <li><a href="#/overview">Overview</a></li>
+                <li class="active"><a href="#/meeting">Meetings <span class="sr-only">(current)</span></a></li>
+                <li><a href="#/email">Email</a></li>
+                <li><a href="#/morale">Morale</a></li>
+            </ul>
+        </div>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+            <div ng-include src="'/views/stats.html'"></div>
+            <h2 class="sub-header">Meeting Performance</h2>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-6 chart" ng-controller="dailyTotalMeetingCostsChartCtrl">
+                        <div class="panel-heading">Daily Total Meeting Costs</div>
+                        <div class="panel-body"><div><canvas id="dailyTotalMeetingCostsChart"></canvas></div></div>
+                        <div class="panel-body chart-legend" id="dailyTotalMeetingCostsChartLegend"></div>
+                    </div>
+                    <div class="col-md-6 chart" ng-controller="dailyProductivityRatingChartCtrl">
+                        <div class="panel-heading">Daily Productivity Rating</div>
+                        <div class="panel-body"><div><canvas id="dailyProductivityRatingChart"></canvas></div></div>
+                        <div class="panel-body chart-legend" id="dailyProductivityRatingChartLegend"></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 chart" ng-controller="dailyAverageMeetingCostsChartCtrl">
+                        <div class="panel-heading">Daily Average Meeting Costs</div>
+                        <div class="panel-body"><div><canvas id="dailyAverageMeetingCostsChart"></canvas></div></div>
+                        <div class="panel-body chart-legend" id="dailyAverageMeetingCostsChartLegend"></div>
+                    </div>
+                    <div class="col-md-6 chart" ng-controller="dailyAverageMeetingSizeChartCtrl">
+                        <div class="panel-heading">Daily Average Meeting Size</div>
+                        <div class="panel-body"><div><canvas id="dailyAverageMeetingSizeChart"></canvas></div></div>
+                        <div class="panel-body chart-legend" id="dailyAverageMeetingSizeChartLegend"></div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
+    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2" ng-include src="'/views/footer.html'"></div>
 </div>
