@@ -14,7 +14,7 @@ var websockets = require('./websockets');
  * Get port from environment and store in Express.
  */
 
-var port = parseInt(process.env.PORT, 10) || 3000;
+var port = parseInt(process.env.DASHBOARD_PORT, 10) || 3000;
 app.set('port', port);
 
 /**
